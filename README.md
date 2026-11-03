@@ -6,9 +6,7 @@ Frontend HTML/CSS/JavaScript, backend Express, SQLite integrado ao Node.js 24 e 
 
 ## 1. Colocar no GitHub
 
-Extraia o ZIP e envie **o conteúdo da pasta `auth-profile-demo` para a raiz do repositório**, incluindo `.devcontainer`, `.gitignore` e `.env.example`. Não envie `node_modules`, `.env` ou `data`.
-
-No GitHub, selecione **Code → Codespaces → Create codespace on main**. A configuração incluída usa Node.js 24 e executa `npm ci` na criação do ambiente. Se adicionar essa configuração a um Codespace já existente, use **F1 → Codespaces: Rebuild Container**.
+No GitHub, selecione **Code → Codespaces → Create codespace on main**. 
 
 ## 2. Iniciar no Codespaces
 
@@ -25,7 +23,7 @@ Copie o valor gerado para `SESSION_SECRET` no arquivo `.env`. Esse arquivo já e
 npm start
 ```
 
-Na aba **Ports**, abra a porta **3000** em uma **nova aba do navegador**. Evite o preview embutido para o fluxo Google. Para compartilhar a aplicação com a turma, altere **Port Visibility → Public**; isso torna a aplicação acessível a quem tiver a URL enquanto o Codespace estiver ativo. Organizações podem restringir essa opção. Para teste individual, a porta privada pode funcionar no mesmo navegador autenticado no GitHub.
+Na aba **Ports**, abra a porta **3000** em uma **nova aba do navegador**. Evite o preview embutido para o fluxo Google. Altere **Port Visibility → Public**; isso torna a aplicação acessível a quem tiver a URL enquanto o Codespace estiver ativo. Organizações podem restringir essa opção. Para teste individual, a porta privada pode funcionar no mesmo navegador autenticado no GitHub.
 
 O terminal mostra a URL da aplicação e o **Callback Google**. No Codespaces, o endereço é detectado pelas variáveis do ambiente. Exemplo:
 
@@ -40,9 +38,10 @@ Teste primeiro **Criar conta**, preencha o perfil, salve, saia e use **Entrar**.
 
 Não é necessário ativar uma assinatura paga, fornecer cartão ou habilitar faturamento para este login. O projeto Google armazena a configuração de identidade; o servidor continua rodando no Codespaces.
 
-1. Acesse [Google Cloud Console](https://console.cloud.google.com/) e **crie ou selecione um projeto**. Não é preciso ativar o teste gratuito de serviços pagos.
-2. Abra **Google Auth Platform** (use a busca da Console). Em **Get started / Começar**, informe o nome da aplicação, e-mail de suporte e e-mail de contato.
-3. Em **Audience / Público-alvo**, escolha **External / Externo** para permitir contas fora da sua instituição. Uma conta institucional pode ter políticas que impedem criação de projetos ou login em aplicativos externos; nesse caso, teste com uma conta pessoal permitida. Pode manter a aplicação em **Testing / Teste**. Se a Console solicitar usuários de teste, adicione as contas usadas na aula. Os escopos básicos deste demo (`openid`, `email`, `profile`) têm exceção à exigência da lista de teste, segundo a documentação Google.
+1. Acesse [Google Cloud Console](https://console.cloud.google.com/) com uma conta Google normal (é possível que a conta @acad.ufsm.br não funcione para este demo). Não é preciso ativar o teste gratuito de serviços pagos.
+2. Use a busca da Console para localizar **Google Auth Platform**. Crie um projeto. Em **Get started / Vamos começar**, informe o nome da aplicação, e-mail de suporte e e-mail de contato.
+3. Em **Audience / Público-alvo**, escolha **External / Externo** para permitir contas fora da sua instituição. Uma conta institucional pode ter políticas que impedem criação de projetos ou login em aplicativos externos; nesse caso, teste com uma conta pessoal permitida. Pode manter a aplicação em **Testing / Teste**. 
+Se a Console solicitar usuários de teste, adicione alguma outra conta pessoal. Os escopos básicos deste demo (`openid`, `email`, `profile`) têm exceção à exigência da lista de teste, segundo a documentação Google.
 4. Em **Clients / Clientes → Create client / Criar cliente**, escolha **Web application / Aplicativo da Web** e dê um nome ao cliente.
 5. Em **Authorized redirect URIs / URIs de redirecionamento autorizados**, cole **exatamente o Callback Google mostrado no terminal**, incluindo `https://`, o domínio e `/auth/google/callback`. Não adicione barra ao final. Para também testar localmente, acrescente outra entrada: `http://localhost:3000/auth/google/callback`.
 6. Salve e copie o **Client ID** e o **Client secret** para `.env`:
@@ -69,7 +68,7 @@ O `GOOGLE_CLIENT_SECRET` fica no backend. Nunca o coloque em `public/`, no READM
 5. Teste outra conta em janela privada (a porta precisa estar pública se essa janela não estiver autenticada no GitHub). Ela terá outro perfil.
 6. Sem login, acessar `/api/profile` deve retornar **401**. A página do formulário redireciona para a entrada.
 
-As contas locais e Google são **separadas, mesmo que tenham o mesmo e-mail**. Isso permite comparar os dois caminhos e evita vincular automaticamente identidades por e-mail. Entre sempre pelo método usado na criação. Para Google, o identificador persistente é `sub`, não o e-mail.
+As contas locais e Google são **separadas, mesmo que tenham o mesmo e-mail**. Isso permite comparar os dois caminhos e evita vincular automaticamente identidades por e-mail. Entre sempre pelo método usado na criação.
 
 ## Executar localmente
 
