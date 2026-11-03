@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Minha conta · Demo</title><link rel="stylesheet" href="/style.css">
+<main><p class="eyebrow">ELC1090 · Autenticação</p><h1>Um perfil, duas formas de começar.</h1>
+<p>Crie uma conta com senha ou use sua Conta do Google. Depois, complete seu perfil.</p>
+<section class="card"><div class="tabs"><button id="registerTab" type="button" aria-pressed="true">Criar conta</button><button id="loginTab" type="button" aria-pressed="false">Entrar</button></div>
+<form id="authForm"><label>E-mail<input name="email" type="email" autocomplete="email" required maxlength="254"></label>
+<label>Senha<input name="password" id="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required></label>
+<p class="hint">Use uma senha de teste com pelo menos 8 caracteres.</p><button id="submit" class="primary">Criar conta</button></form>
+<div class="divider">ou</div><a class="google" id="google" href="/auth/google">Continuar com Google</a>
+<p class="hint" id="googleHint" hidden>Login Google ainda não configurado. Consulte o README. O cadastro com senha já funciona.</p>
+<p id="message" role="status" aria-live="polite"></p></section></main><script type="module" src="/login.js"></script></html>

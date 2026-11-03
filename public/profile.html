@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meu perfil · Demo</title><link rel="stylesheet" href="/style.css">
+<main><p class="eyebrow">ELC1090 · Meu perfil</p><h1>Conte um pouco sobre você.</h1>
+<section class="card" id="profileCard" hidden><div class="account"><div><strong id="identity"></strong><p class="hint" id="provider"></p></div><button type="button" id="logout">Sair</button></div>
+<form id="profileForm"><label>Nome<input name="name" autocomplete="name" maxlength="80" required></label>
+<label>Curso ou área de atuação<input name="course" maxlength="100" required></label>
+<label>Cidade<input name="city" autocomplete="address-level2" maxlength="100" required></label>
+<label>Interesses<input name="interests" maxlength="200" placeholder="Ex.: desenvolvimento web, música, viagens"></label>
+<label>Sobre você<textarea name="bio" rows="4" maxlength="500"></textarea></label>
+<button class="primary">Salvar perfil</button></form></section><p id="message" role="status" aria-live="polite"></p></main>
+<script type="module" src="/profile.js"></script></html>
