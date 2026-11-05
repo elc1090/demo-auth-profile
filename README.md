@@ -4,13 +4,13 @@ Demo minimalista: **criar conta ou continuar com Google → completar perfil →
 
 Frontend HTML/CSS/JavaScript, backend Express, SQLite integrado ao Node.js 24 e sessões com cookie. Sem Docker, build de frontend ou serviço externo de banco de dados. Google é opcional para iniciar: o cadastro e login com senha funcionam imediatamente.
 
-## 1. Colocar no GitHub
+
+
+## 1. Iniciar no GitHub Codespaces
 
 No GitHub, selecione **Code → Codespaces → Create codespace on main**. 
 
-## 2. Iniciar no Codespaces
-
-No terminal:
+No terminal do Codespace:
 
 ```bash
 cp .env.example .env
@@ -34,9 +34,9 @@ Callback Google: https://SEU-CODESPACE-3000.app.github.dev/auth/google/callback
 
 Teste primeiro **Criar conta**, preencha o perfil, salve, saia e use **Entrar**. Em seguida configure o Google.
 
-## 3. Configurar o Google — passo a passo
+## 2. Configurar um projeto na Google Auth Platform
 
-Não é necessário ativar uma assinatura paga, fornecer cartão ou habilitar faturamento para este login. O projeto Google armazena a configuração de identidade; o servidor continua rodando no Codespaces.
+Para isso, basta ter uma conta Google. Não é necessário ativar uma assinatura paga, fornecer cartão ou habilitar faturamento para este login. O projeto Google armazena a configuração de identidade; o servidor continua rodando no Codespaces.
 
 1. Acesse [Google Cloud Console](https://console.cloud.google.com/) com uma conta Google normal (é possível que a conta @acad.ufsm.br não funcione para este demo). Não é preciso ativar o teste gratuito de serviços pagos.
 2. Use a busca da Console para localizar **Google Auth Platform**. Crie um projeto. Em **Get started / Vamos começar**, informe o nome da aplicação, e-mail de suporte e e-mail de contato.
@@ -70,7 +70,7 @@ O `GOOGLE_CLIENT_SECRET` fica no backend. Nunca o coloque em `public/`, no READM
 
 As contas locais e Google são **separadas, mesmo que tenham o mesmo e-mail**. Isso permite comparar os dois caminhos e evita vincular automaticamente identidades por e-mail. Entre sempre pelo método usado na criação.
 
-## Executar localmente
+## [Opcional] Executar localmente
 
 Instale **Node.js 24**. Na pasta do projeto:
 
@@ -95,7 +95,7 @@ APP_URL=https://endereco-publico-da-aplicacao
 | Etapa | E-mail e senha | Google |
 | --- | --- | --- |
 | Verificação de identidade | Backend verifica senha com scrypt | Google autentica; backend valida ID token |
-| Dados locais | E-mail, salt e hash da senha | E-mail e identificador Google `sub`; nenhuma senha Google |
+| Dados locais | E-mail, salt e hash da senha | E-mail e identificador Google `sub` (subject, ou seja, sujeito/pessoa); nenhuma senha Google |
 | Sessão da aplicação | Cookie com identificador de sessão | O mesmo mecanismo |
 | Perfil adicional | Salvo no SQLite | Salvo no mesmo SQLite |
 
